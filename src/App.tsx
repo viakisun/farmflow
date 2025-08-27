@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import RootLayout from './components/layout/RootLayout';
 import IndexPage from './pages/IndexPage';
 import DashboardPage from './pages/DashboardPage';
 import MapEditorPage from './pages/MapEditorPage';
@@ -16,55 +17,61 @@ import HelpTutorialsPage from './pages/HelpTutorialsPage';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <IndexPage />,
-  },
-  {
-    path: '/dashboard',
-    element: <DashboardPage />,
-  },
-  {
-    path: '/map-editor',
-    element: <MapEditorPage />,
-  },
-  {
-    path: '/workflow-editor',
-    element: <WorkflowEditorPage />,
-  },
-  {
-    path: '/simulation-viewer',
-    element: <SimulationViewerPage />,
-  },
-  {
-    path: '/mission-scheduler',
-    element: <MissionSchedulerPage />,
-  },
-  {
-    path: '/robot-library',
-    element: <RobotLibraryManagerPage />,
-  },
-  {
-    path: '/scenario-templates',
-    element: <ScenarioTemplateGalleryPage />,
-  },
-  {
-    path: '/design-export',
-    element: <ExportCenterPage />,
-  },
-  {
-    path: '/performance-dashboard',
-    element: <PerformanceDashboardPage />,
-  },
-  {
-    path: '/safety-validation',
-    element: <CollisionSafetyPage />,
-  },
-  {
-    path: '/developer-tools',
-    element: <ApiToolsPage />,
-  },
-  {
-    path: '/help',
-    element: <HelpTutorialsPage />,
+    element: <RootLayout />,
+    children: [
+      {
+        index: true,
+        element: <IndexPage />,
+      },
+      {
+        path: 'dashboard',
+        element: <DashboardPage />,
+      },
+      {
+        path: 'map-editor',
+        element: <MapEditorPage />,
+      },
+      {
+        path: 'workflow-editor',
+        element: <WorkflowEditorPage />,
+      },
+      {
+        path: 'simulation-viewer',
+        element: <SimulationViewerPage />,
+      },
+      {
+        path: 'mission-scheduler',
+        element: <MissionSchedulerPage />,
+      },
+      {
+        path: 'robot-library',
+        element: <RobotLibraryManagerPage />,
+      },
+      {
+        path: 'scenario-templates',
+        element: <ScenarioTemplateGalleryPage />,
+      },
+      {
+        path: 'design-export',
+        element: <ExportCenterPage />,
+      },
+      {
+        path: 'performance-dashboard',
+        element: <PerformanceDashboardPage />,
+      },
+      {
+        path: 'safety-validation',
+        element: <CollisionSafetyPage />,
+      },
+      {
+        path: 'developer-tools',
+        element: <ApiToolsPage />,
+      },
+      {
+        path: 'help',
+        element: <HelpTutorialsPage />,
+      },
+    ],
   },
 ]);
 

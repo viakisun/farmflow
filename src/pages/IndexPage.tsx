@@ -38,36 +38,12 @@ const managementPages = [
 
 const IndexPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-foreground">
-      <header className="relative bg-white dark:bg-gray-800/50 py-10 sm:py-12 md:py-16 mb-10 text-center overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-10">
-            {/* Decorative SVG background */}
-            <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400"><path fill="currentColor" d="M362.6-11.4c-81.2 5.5-161.7 39-232.2 92.5l-2.1 1.6c-17.5 13.4-34.4 27.6-50.2 42.6L1.6 189.5C-1.8 222.8 1.4 259.9 14.8 291.6c13.4 31.7 36.3 58.3 66.3 77.2l2.3 1.4c71.3 44.4 150.9 69.3 234.3 71.1l2.3.1c83.4-1.8 163-26.7 234.3-71.1l2.3-1.4c30-18.9 52.9-45.5 66.3-77.2c13.4-31.7 16.6-68.8 3.2-102.1l-14-36.2c-15.8-15-32.7-29.2-50.2-42.6l-2.1-1.6c-70.5-53.5-151-87-232.2-92.5l-5.6-.4-5.6.4z" /></svg>
-        </div>
-        <div className="relative z-10 flex flex-col items-center">
-            <div className="w-16 h-16 mb-4">
-                <svg viewBox="0 0 64 64">
-                    <defs>
-                        <linearGradient id="logoBg" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style={{stopColor:'#256C3A'}}/>
-                        <stop offset="100%" style={{stopColor:'#1e5530'}}/>
-                        </linearGradient>
-                    </defs>
-                    <rect x="8" y="8" width="48" height="48" rx="12" fill="url(#logoBg)"/>
-                    <rect x="16" y="36" width="4" height="12" fill="white" rx="2"/>
-                    <rect x="22" y="32" width="4" height="16" fill="white" rx="2"/>
-                    <rect x="28" y="28" width="4" height="20" fill="white" rx="2"/>
-                    <rect x="34" y="24" width="4" height="24" fill="white" rx="2"/>
-                    <rect x="40" y="30" width="4" height="18" fill="white" rx="2"/>
-                    <circle cx="48" cy="20" r="4" fill="white"/>
-                    <rect x="46" y="18" width="4" height="4" fill="#256C3A" rx="1"/>
-                </svg>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">FarmFlow Designer</h1>
-            <p className="text-lg text-muted-foreground mt-2">MVP Index</p>
-        </div>
+    <div className="h-full overflow-y-auto p-4 md:p-8">
+      <header className="mb-10 text-center">
+        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight dark:text-white">FarmFlow Designer</h1>
+        <p className="text-lg text-muted-foreground mt-2">MVP Application Hub</p>
       </header>
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+      <main className="max-w-7xl mx-auto">
         <IndexSection title="Core Modules" pages={corePages} />
         <IndexSection title="Advanced Modules" pages={advancedPages} />
         <IndexSection title="Management" pages={managementPages} />
