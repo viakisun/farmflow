@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import RootLayout from './components/layout/RootLayout';
+import AppLayout from './components/layout/AppLayout';
+import SiteLayout from './components/layout/SiteLayout';
 import IndexPage from './pages/IndexPage';
 import DashboardPage from './pages/DashboardPage';
 import MapEditorPage from './pages/MapEditorPage';
@@ -16,59 +17,63 @@ import HelpTutorialsPage from './pages/HelpTutorialsPage';
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <RootLayout />,
+    element: <SiteLayout />,
     children: [
       {
-        index: true,
+        path: '/',
         element: <IndexPage />,
       },
+    ],
+  },
+  {
+    element: <AppLayout />,
+    children: [
       {
-        path: 'dashboard',
+        path: '/dashboard',
         element: <DashboardPage />,
       },
       {
-        path: 'map-editor',
+        path: '/map-editor',
         element: <MapEditorPage />,
       },
       {
-        path: 'workflow-editor',
+        path: '/workflow-editor',
         element: <WorkflowEditorPage />,
       },
       {
-        path: 'simulation-viewer',
+        path: '/simulation-viewer',
         element: <SimulationViewerPage />,
       },
       {
-        path: 'mission-scheduler',
+        path: '/mission-scheduler',
         element: <MissionSchedulerPage />,
       },
       {
-        path: 'robot-library',
+        path: '/robot-library',
         element: <RobotLibraryManagerPage />,
       },
       {
-        path: 'scenario-templates',
+        path: '/scenario-templates',
         element: <ScenarioTemplateGalleryPage />,
       },
       {
-        path: 'design-export',
+        path: '/design-export',
         element: <ExportCenterPage />,
       },
       {
-        path: 'performance-dashboard',
+        path: '/performance-dashboard',
         element: <PerformanceDashboardPage />,
       },
       {
-        path: 'safety-validation',
+        path: '/safety-validation',
         element: <CollisionSafetyPage />,
       },
       {
-        path: 'developer-tools',
+        path: '/developer-tools',
         element: <ApiToolsPage />,
       },
       {
-        path: 'help',
+        path: '/help',
         element: <HelpTutorialsPage />,
       },
     ],

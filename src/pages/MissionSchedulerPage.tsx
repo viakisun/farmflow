@@ -222,46 +222,6 @@ const MissionScheduler = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex" data-testid="mission-scheduler-page">
-      {/* Left Navigation */}
-      <nav className="w-16 bg-white border-r border-gray-200 flex flex-col items-center py-4 shadow-sm" data-testid="left-nav" role="navigation">
-        <div className="w-8 h-8 mb-8">
-          <svg className="w-8 h-8" viewBox="0 0 64 64">
-            <defs>
-              <linearGradient id="navBg" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style={{stopColor:'#256C3A'}}/>
-                <stop offset="100%" style={{stopColor:'#1e5530'}}/>
-              </linearGradient>
-            </defs>
-            <rect x="8" y="8" width="48" height="48" rx="12" fill="url(#navBg)"/>
-            <rect x="16" y="36" width="4" height="12" fill="white" rx="2"/>
-            <rect x="22" y="32" width="4" height="16" fill="white" rx="2"/>
-            <rect x="28" y="28" width="4" height="20" fill="white" rx="2"/>
-            <rect x="34" y="24" width="4" height="24" fill="white" rx="2"/>
-            <rect x="40" y="30" width="4" height="18" fill="white" rx="2"/>
-            <circle cx="48" cy="20" r="4" fill="white"/>
-            <rect x="46" y="18" width="4" height="4" fill="#256C3A" rx="1"/>
-          </svg>
-        </div>
-        
-        <div className="flex flex-col space-y-4">
-          <button className="w-10 h-10 rounded-lg text-gray-500 hover:bg-gray-100 flex items-center justify-center transition-colors" data-testid="nav-dashboard">
-            <Home className="w-5 h-5" />
-          </button>
-          <button className="w-10 h-10 rounded-lg text-gray-500 hover:bg-gray-100 flex items-center justify-center transition-colors" data-testid="nav-workflows">
-            <Workflow className="w-5 h-5" />
-          </button>
-          <button className="w-10 h-10 rounded-lg text-gray-500 hover:bg-gray-100 flex items-center justify-center transition-colors" data-testid="nav-simulation">
-            <BarChart3 className="w-5 h-5" />
-          </button>
-          <button className="w-10 h-10 rounded-lg bg-[#256C3A] text-white flex items-center justify-center shadow-md" data-testid="nav-scheduler">
-            <Calendar className="w-5 h-5 fill-current" />
-          </button>
-          <button className="w-10 h-10 rounded-lg text-gray-500 hover:bg-gray-100 flex items-center justify-center transition-colors" data-testid="nav-settings">
-            <Settings className="w-5 h-5" />
-          </button>
-        </div>
-      </nav>
-
       {/* Main Content */}
       <main className="flex-1 flex" data-testid="main-content" role="main">
         <div className="flex-1 flex flex-col">

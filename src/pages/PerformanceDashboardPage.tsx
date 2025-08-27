@@ -275,37 +275,6 @@ const PerformanceDashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex" data-testid="performance-dashboard-page">
-      {/* Left Navigation */}
-      <nav className="w-16 bg-white border-r border-gray-200 flex flex-col items-center py-6 shadow-sm" data-testid="left-nav" role="navigation">
-        <div className="mb-8">
-          <FarmFlowFavicon />
-        </div>
-        
-        <div className="flex flex-col space-y-3">
-          {[
-            { icon: Home, id: 'dashboard', active: false },
-            { icon: Workflow, id: 'workflows', active: false },
-            { icon: BarChart3, id: 'analytics', active: true },
-            { icon: Calendar, id: 'scheduler', active: false },
-            { icon: Package, id: 'library', active: false },
-            { icon: Star, id: 'templates', active: false },
-            { icon: Settings, id: 'settings', active: false }
-          ].map(({ icon: Icon, id, active }) => (
-            <button 
-              key={id}
-              className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-200 ${
-                active 
-                  ? 'bg-[#256C3A] text-white shadow-lg shadow-[#256C3A]/25 scale-105' 
-                  : 'text-gray-500 hover:bg-gray-100 hover:text-gray-700 hover:scale-105'
-              }`}
-              data-testid={`nav-${id}`}
-            >
-              <Icon className="w-5 h-5" />
-            </button>
-          ))}
-        </div>
-      </nav>
-
       {/* Main Content */}
       <main className="flex-1 flex" data-testid="main-content" role="main">
         <div className="flex-1 flex flex-col">
