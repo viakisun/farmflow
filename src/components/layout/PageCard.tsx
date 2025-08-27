@@ -35,7 +35,7 @@ const PageCard: React.FC<PageCardProps> = ({ code, title, description, to, type,
         <CardHeader>
           <div className="flex justify-between items-center mb-4">
             <div className={`p-2 rounded-lg ${iconColors[type]}`}>
-              <Icon className="w-6 h-6" />
+              {Icon && <Icon className="w-6 h-6" />}
             </div>
             <Badge variant="outline" className={typeColors[type]}>{code}</Badge>
           </div>
