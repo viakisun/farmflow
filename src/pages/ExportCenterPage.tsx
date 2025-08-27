@@ -419,7 +419,7 @@ const ExportCenter = () => {
                 <FarmFlowFavicon className="w-10 h-10" />
                 <div>
                   <h1 className="text-2xl font-bold text-gray-900" data-testid="system-title">
-                    VIA FarmFlow for Developers
+                    VIAFARM
                   </h1>
                   <p className="text-sm text-gray-600 font-medium">Design Export Center</p>
                 </div>

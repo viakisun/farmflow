@@ -40,8 +40,8 @@ const IndexPage: React.FC = () => {
   return (
     <div className="h-full overflow-y-auto p-4 md:p-8">
       <header className="mb-10 text-center">
-        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight dark:text-white">FarmFlow Designer</h1>
-        <p className="text-lg text-muted-foreground mt-2">MVP Application Hub</p>
+        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight dark:text-white">VIAFARM</h1>
+        <p className="text-lg text-muted-foreground mt-2">Designer</p>
       </header>
       <main className="max-w-7xl mx-auto">
         <IndexSection title="Core Modules" pages={corePages} />
