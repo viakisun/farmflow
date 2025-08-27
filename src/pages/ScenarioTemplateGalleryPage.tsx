@@ -153,21 +153,44 @@ const TemplateCard = ({ template, isSelected, onSelect, onPreview }) => {
   );
 };
 
+import { useOverlayStore } from '@/stores/overlay';
+import { useEffect } from 'react';
+
 // Template Preview Modal
 const TemplatePreviewModal = ({ template, isOpen, onClose, onApply }) => {
+  const { open, closeAll } = useOverlayStore();
   const [activeTab, setActiveTab] = useState('overview');
+
+  useEffect(() => {
+    if (isOpen) {
+      open();
+    } else {
+      closeAll();
+    }
+    return () => closeAll();
+  }, [isOpen, open, closeAll]);
 
   if (!isOpen || !template) return null;
 
+  const handleClose = () => {
+    closeAll();
+    onClose();
+  };
+
+  const handleApply = () => {
+    closeAll();
+    onApply(template);
+  };
+
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" data-testid="template-preview-modal">
-      <div className="bg-white rounded-xl shadow-xl max-w-4xl w-full mx-4 max-h-[90vh] overflow-hidden">
+    <div className="fixed inset-0 flex items-center justify-center z-50 p-4" data-testid="template-preview-modal">
+      <div className="bg-white rounded-xl shadow-xl max-w-4xl w-full mx-4 max-h-[90vh] overflow-hidden flex flex-col">
         <div className="flex items-center justify-between p-6 border-b border-gray-200">
           <div>
             <h2 className="text-xl font-bold text-gray-900">{template.name}</h2>
             <p className="text-sm text-gray-600 mt-1">{template.description}</p>
           </div>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+          <button onClick={handleClose} className="text-gray-400 hover:text-gray-600">
             <X className="w-6 h-6" />
           </button>
         </div>
@@ -284,11 +307,11 @@ const TemplatePreviewModal = ({ template, isOpen, onClose, onApply }) => {
             Estimated duration: {template.duration} • {template.robotsRequired} robots required
           </div>
           <div className="flex space-x-3">
-            <Button variant="outline" onClick={onClose}>
+            <Button variant="outline" onClick={handleClose}>
               Cancel
             </Button>
             <Button 
-              onClick={() => onApply(template)}
+              onClick={handleApply}
               className="bg-[#256C3A] hover:bg-[#1e5530] text-white"
             >
               <Play className="w-4 h-4 mr-2" />

@@ -220,26 +220,37 @@ const TemplateCard = ({ template, isSelected, onSelect, onPreview }) => {
   );
 };
 
+import { useOverlayStore } from '@/stores/overlay';
+
 // Enhanced Template Preview Modal
 const TemplatePreviewModal = ({ template, isOpen, onClose, onApply }) => {
+  const { open, closeAll } = useOverlayStore();
   const [activeTab, setActiveTab] = useState('overview');
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      open();
     } else {
-      document.body.style.overflow = 'unset';
+      closeAll();
     }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isOpen]);
+    return () => closeAll();
+  }, [isOpen, open, closeAll]);
 
   if (!isOpen || !template) return null;
 
+  const handleClose = () => {
+    closeAll();
+    onClose();
+  };
+
+  const handleApply = () => {
+    closeAll();
+    onApply(template);
+  };
+
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4" data-testid="template-preview-modal">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden animate-in fade-in-0 zoom-in-95 duration-300">
+    <div className="fixed inset-0 flex items-center justify-center z-50 p-4" data-testid="template-preview-modal">
+      <div className="bg-white rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden animate-in fade-in-0 zoom-in-95 duration-300 flex flex-col">
         <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gray-50">
           <div className="flex items-center space-x-4">
             <div className="w-12 h-12 bg-gradient-to-br from-[#256C3A] to-[#1e5530] rounded-xl flex items-center justify-center shadow-lg">
@@ -258,7 +269,7 @@ const TemplatePreviewModal = ({ template, isOpen, onClose, onApply }) => {
               <Maximize2 className="w-5 h-5 text-gray-500" />
             </button>
             <button 
-              onClick={onClose} 
+              onClick={handleClose}
               className="p-2 hover:bg-gray-200 rounded-lg transition-colors"
             >
               <X className="w-5 h-5 text-gray-500" />
@@ -293,7 +304,7 @@ const TemplatePreviewModal = ({ template, isOpen, onClose, onApply }) => {
           })}
         </div>
 
-        <div className="p-6 overflow-y-auto max-h-96">
+        <div className="p-6 overflow-y-auto flex-1">
           {activeTab === 'overview' && (
             <div className="space-y-6" data-testid="overview-tab">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -389,11 +400,11 @@ const TemplatePreviewModal = ({ template, isOpen, onClose, onApply }) => {
             <span className="font-medium"> Robots required:</span> {template.robotsRequired}
           </div>
           <div className="flex space-x-3">
-            <Button variant="outline" onClick={onClose} className="border-gray-300">
+            <Button variant="outline" onClick={handleClose} className="border-gray-300">
               Cancel
             </Button>
             <Button 
-              onClick={() => onApply(template)}
+              onClick={handleApply}
               className="bg-[#256C3A] hover:bg-[#1e5530] text-white shadow-sm"
             >
               <Play className="w-4 h-4 mr-2" />
