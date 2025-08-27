@@ -1,22 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { Home, Workflow, BarChart3, Settings } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useOverlayStore } from '@/stores/overlay';
+import Overlay from '@/components/ui/Overlay';
 
 const navItems = [
   { path: '/', icon: Home, label: 'Home' },
   { path: '/workflow-editor', icon: Workflow, label: 'Workflows' },
   { path: '/performance-dashboard', icon: BarChart3, label: 'Analytics' },
-  { path: '/help', icon: Settings, label: 'Help' }, // Assuming settings might be in help
+  { path: '/help', icon: Settings, label: 'Help' },
 ];
 
 const RootLayout: React.FC = () => {
   const location = useLocation();
+  const { isAnyOverlayOpen, closeAll } = useOverlayStore();
+
+  // Close any overlays when the route changes
+  useEffect(() => {
+    closeAll();
+  }, [location.pathname, closeAll]);
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex">
       {/* Left Navigation */}
-      <nav className="w-16 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col items-center py-4">
+      <nav className="w-16 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col items-center py-4 z-20">
         <Link to="/" className="w-8 h-8 mb-8">
           <svg className="w-8 h-8" viewBox="0 0 64 64">
             <defs>
@@ -59,9 +67,12 @@ const RootLayout: React.FC = () => {
       </nav>
 
       {/* Main Content */}
-      <main className="flex-1">
+      <main className="flex-1 relative z-10">
         <Outlet />
       </main>
+
+      {/* Global Overlay */}
+      <Overlay open={isAnyOverlayOpen} onClick={closeAll} />
     </div>
   );
 };
