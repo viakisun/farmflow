@@ -249,7 +249,7 @@ const MissionScheduler = () => {
                 </div>
                 <div>
                   <h1 className="text-xl font-bold text-gray-900" data-testid="system-title">
-                    VIA FarmFlow for Developers
+                    VIAFARM
                   </h1>
                   <p className="text-sm text-gray-500">Mission Scheduler</p>
                 </div>
