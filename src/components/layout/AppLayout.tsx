@@ -12,7 +12,7 @@ const navItems = [
   { path: '/help', icon: Settings, label: 'Help' },
 ];
 
-const RootLayout: React.FC = () => {
+const AppLayout: React.FC = () => {
   const location = useLocation();
   const { isAnyOverlayOpen, closeAll } = useOverlayStore();
 
@@ -77,4 +77,4 @@ const RootLayout: React.FC = () => {
   );
 };
 
-export default RootLayout;
+export default AppLayout;
